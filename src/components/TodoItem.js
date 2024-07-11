@@ -1,8 +1,18 @@
-const TudoItem = () => {
-    return ( 
+import React from 'react';
 
-        <h1>Item Lista</h1>
-     );
-}
- 
-export default TudoItem;
+const TodoItem = ({ task, onRemove }) => {
+  // Verifica se a task está definida antes de tentar acessar suas propriedades
+  if (!task) return null;
+
+  const { id, title, description } = task;
+
+  return (
+    <div className="todo-item">
+      <h3>{title}</h3>
+      <p>{description}</p>
+      <button onClick={() => onRemove(id)}>Remover</button>
+    </div>
+  );
+};
+
+export default TodoItem;
